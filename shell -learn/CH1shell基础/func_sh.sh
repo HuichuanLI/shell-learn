@@ -5,4 +5,4 @@ function add
 	value=`expr $1 + $2`
 	echo $value
 }
-add 123 456
+add $1 $2
