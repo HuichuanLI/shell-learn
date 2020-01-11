@@ -106,3 +106,6 @@ For小例子
 
 C语言风格 for 循环
 [for_5](./for_5.sh)
+
+While
+[for_6](./for_6.sh)
