@@ -15,3 +15,21 @@
 [example](./location_var.sh)
 
 [example_function](./func_sh.sh)
+
+Linu×是一个多租户的操作系统，针对不同的用户都会有一个专有的 运行环境
+
+![](./photo/03.png)
+
+![](./photo/02.png)
+
+### 退出状态码
+
+- 所有的sh命令都使用退出状态码来告知sh它已执行完毕 
+- 退出状态码是一个0一255的整数值 
+- Linu×提供了一个$?来捕获退出状态码的值
+
+![](./photo/04.png)
+
+[exit_code](./exit_code.sh)
+
+
