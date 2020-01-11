@@ -13,3 +13,8 @@ echo $var3
 var4=${variable%%ov*}
 echo $var4
 
+var5=${PATH/bin/BIN}
+echo $var5
+
+var6=${PATH//bin/BIN}
+echo $var6
