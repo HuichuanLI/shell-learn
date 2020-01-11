@@ -115,3 +115,10 @@ until
 
 break
 [break](./break.sh)
+
+continue
+[continue](./continue.sh)
+
+output
+
+[cycle_output](./cycle_output.sh)
