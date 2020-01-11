@@ -56,5 +56,27 @@ Linu×是一个多租户的操作系统，针对不同的用户都会有一个�
 
 ![](./photo/08.png)
 
-
 [condition_file](./condition_file.sh)
+
+#### && || 
+
+[condition_mix](./condition_mix.sh)
+
+
+#### 双括号(())
+
+- 使用双括号可以进行算数运算，可以写类C语言的运算表达式 
+- a++或者b—或者a+=1或者a<b或者a！=b
+
+![](./photo/09.png)
+
+![](./photo/10.png)
+
+- 双括号结构中，变量名引用可以加$，也可以不加 
+- 运算符前后可以有空格，也可以没有 
+- 可以用于if、for、while等循环控制结构中
+
+[double_bracker](./double_bracker.sh)
+
+#### 双方括号[[]]
+
