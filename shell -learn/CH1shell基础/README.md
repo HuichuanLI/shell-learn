@@ -89,6 +89,20 @@ Linu×是一个多租户的操作系统，针对不同的用户都会有一个�
 
 #### for
 
-[for_1](./for_1.sh)
+For小例子
+[for_1](./for_1.sh) 
 
-[for_2](./for_2.sh)
+
+修改IFS
+[for_2](./for_2.sh) 
+
+
+
+系统命令
+[for_3](./for_3.sh)
+
+读取文件
+[for_4](./for_4.sh)
+
+C语言风格 for 循环
+[for_5](./for_5.sh)
