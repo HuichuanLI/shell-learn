@@ -41,3 +41,20 @@ Linu×是一个多租户的操作系统，针对不同的用户都会有一个�
 [if_then-lese](./if_then_else.sh)
 
 [if_elif_else](./if_elif_else.sh)
+
+![](./photo/05.png)
+#### 数字比较
+[condition](./condition.sh)
+
+#### 字符串比较
+![](./photo/06.png)
+
+[condition_str](./condition_str.sh)
+   
+#### 文件比较
+![](./photo/07.png)
+
+![](./photo/08.png)
+
+
+[condition_file](./condition_file.sh)
