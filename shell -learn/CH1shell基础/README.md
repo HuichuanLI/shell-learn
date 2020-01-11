@@ -32,4 +32,8 @@ Linu×是一个多租户的操作系统，针对不同的用户都会有一个�
 
 [exit_code](./exit_code.sh)
 
+### If-Then 语句
+
+
+[exit_code](./if_then.sh)
 
