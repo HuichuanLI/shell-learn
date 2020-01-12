@@ -66,5 +66,9 @@
 
 [command4](./command_example4.sh)
 
+#### 由类型变量
 
+- declare命令和typeset命令两者等价 
+- declare、typeset命令都是用来定义变量类型的
 
+![photo](./photo/06.png)
