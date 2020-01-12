@@ -72,3 +72,107 @@
 - declare、typeset命令都是用来定义变量类型的
 
 ![photo](./photo/06.png)
+
+
+
+
+	有类型变量总结：
+	
+		1、declare -r	#声明变量为只读类型
+		
+			declare -r var="hello"
+			var="world"				-bash: var: readonly variable
+			
+		2、declare -i	#声明变量类型为整型
+		
+			num1=2001
+			num2=$num1+1
+			echo $num2
+			
+			declare -i num2
+			num2=$num1+1
+			echo $num2
+		
+		3、declare -f		在脚本中显示定义的函数和内容		
+		4、declare -F		在脚本中显示定义的函数
+		5、declare -a
+		
+			array=("jones" "mike" "kobe" "jordan")
+			
+			输出数组内容：											
+			
+						echo ${array[@]}	输出全部内容
+						echo ${array[1]}	输出下标索引为1的内容
+			
+			获取数组长度：											
+						
+						echo ${#array}		数组内元素个数
+						echo ${#array[2]}	数组内下标索引为2的元素长度
+						
+			给数组某个下标赋值：									
+			
+						array[0]="lily"				给数组下标索引为1的元素赋值为lily
+						array[20]="hanmeimei"		在数组尾部添加一个新元素
+						
+			删除元素：												
+			
+						unset array[2]		清除元素
+						unset array			清空整个数组
+						
+			分片访问：												
+			
+						${array[@]:1:4}		显示数组下标索引从1开始到3的3个元素，不显示索引为4的元素
+						
+			内容替换：												
+			
+						${array[@]/an/AN}	将数组中所有元素内包含kobe的子串替换为mcgrady
+						
+			数组遍历：
+					for v in ${array[@]}
+					do
+							echo $v
+					done
+														
+		
+		6、declare -x
+		
+			声明为环境变量，可以在脚本中直接使用
+		
+	取消声明的变量：
+	
+		declare +r
+		declare +i
+		declare +a
+		declare +X
+		
+#### 数学运算
+    1。 expr $num1 operator $num2
+    2. $(($num1 operator $num2))
+    
+![photo](./photo/07.png)
+
+
+![photo](./photo/08.png)
+
+### 练习例子：
+
+    提示用户输入一个正整数num，然后计算1+2+3+...+sum的值；必须对num是否为正整数做判断，不符合应当允许再此输入
+    
+[operator_example](./operator1.sh)
+
+
+### BC
+- bc是bash内建的运算器，支持浮点数运算 
+- 0内建变量scale可以设置，默认为0
+
+和 expr 一样
+num1^num2
+
+##### 设置scale=2
+    echo "23+35" |bc
+    echo "scale=4;23.3+35.3" |bc
+
+[bc_example](./bc_test.sh)
+
+
+
