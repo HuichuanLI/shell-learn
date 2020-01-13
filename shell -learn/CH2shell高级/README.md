@@ -175,4 +175,17 @@ num1^num2
 [bc_example](./bc_test.sh)
 
 
+### 函数
+- 直接使用函数名调用，可以将其想象成Shell中的一条命令
+- 函数内部可以直接使用参数$1、$2....$n
+- 调用函数function name $1 $2
+name(){
+}
 
+function name{
+}
+
+    function greering
+    {
+        echo "hello,zhangsan"
+    }
