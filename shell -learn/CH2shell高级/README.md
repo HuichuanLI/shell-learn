@@ -189,3 +189,14 @@ function name{
     {
         echo "hello,zhangsan"
     }
+
+nginx 守护进程
+[nginx_daemon](./nginx_daemon.sh)
+
+需求描述：写一个脚本，该脚本可以实现计算器的功能，可以进行+-*/四种计算。
+
+例如：sh calculate.sh 30 + 40		| sh calculate.sh 30 - 40		| sh calculate.sh 30 * 40
+[calculate](./calculate.sh)
+
+
+    
