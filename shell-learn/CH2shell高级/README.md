@@ -198,5 +198,23 @@ nginx 守护进程
 例如：sh calculate.sh 30 + 40		| sh calculate.sh 30 - 40		| sh calculate.sh 30 * 40
 [calculate](./calculate.sh)
 
+#### 函数返回值
+使用return返回值，只能返回1一255的整数 
+函数使用return返回值，通常只是用来供其他地方调用获取状态 此通常仅返回0或1；0表示成功1表示失败
+[return_example](./is_nginx_running.sh)
 
-    
+使用echo返回值：
+
+[echo_example](./user_list.sh)
+
+
+#### 全局变量 && 局部变量
+
+不做特殊声明，Shell中变量都是全局变量
+local 关键字
+函数内和外若存在同名变量，则函数内部变量覆盖外部变量
+
+[local_variable](./local_variable.sh)
+
+#### 函数库
+
