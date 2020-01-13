@@ -9,3 +9,5 @@ reduce 90 30
 multiple 10 2
 
 divide 10 2
+
+print_platform

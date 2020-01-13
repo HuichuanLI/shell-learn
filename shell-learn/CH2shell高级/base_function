@@ -4,22 +4,16 @@
 
 function print_platform
 {
-  local osname=`uname -s`
+ echo "Memory info"
+ echo
+ free -m
+ echo -e "\n$(top -l 1 | awk '/PhysMem/';)\n"
+ echo
 
-  PLATFORM=UNKNOW
-
-  case "$osname" in
-    "FreeBSD")
-      PLATFORM="FreeBSD"
-      ;;
-    "SunOS")
-      PLATFORM="Solaris"
-      ;;
-    "Linux")
-      PLATFORM="Linux"
-      ;;
-  esac
-  return 0
+ echo "Disk usage"
+ echo
+ df -h
+ echo
 }
 
 function add
