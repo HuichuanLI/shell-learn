@@ -46,4 +46,39 @@ sed(Stream Editor)，流编辑器。对标准输出或文件逐 行进行处理
 
 ![](./photo/03.png)
 
+1. LineNumber
+
+    sed -n "1p" file  打印第一行
+    
+    10 -20 行 
+    
+    sed -n "10,20p" passwd
+    
+    10 +5 10～16
+    
+    sed -n "10,+5p" passwd
+    
+    匹配 字符串
+    
+    sed -n "/bash/p" passwd
+    
+    sed -n "/\/sbin\/nologin/p" passwd
+    
+    匹配 ^hdfs
+    
+    sed -n "/^hdfs/p" passwd
+    
+    匹配从第一个匹配的后一个匹配
+    
+    sed -n "/^root/,/^yarn/p" passwd
+    
+    匹配4行开始到^yarn结束    
+    
+    sed -n "4,/^yarn/p" passwd 
+
+
+    
+
+
+    
     
