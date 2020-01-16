@@ -202,4 +202,34 @@ sed(Stream Editor)，流编辑器。对标准输出或文件逐 行进行处理
 		sed -i '/[:blank:]*#/d;/^$/d' nginx.conf
     2、在配置文件中所有不以#开头的行前面添加*符号，注意：以#开头的行不添加
         sed -i 's/^[^#]/\*&/g' nginx.conf
-       
+     
+    修改用法总结：
+    替换
+    1、1s/old/new/
+    2、5,10s/old/new/
+    3、10,+10s/old/new/
+    4、/pattern1/s/old/new/
+    5、/pattern1/,/pattern2/s/old/new/
+    6、/pattern1/,20s/old/new/
+    7、15,/pattern1/s/old/new/  
+    
+    1、修改/etc/passwd中第1行中第1个root为ROOT	
+            sed -i '1s/root/ROOT/' passwd
+    2、修改/etc/passwd中第5行到第10行中所有的/sbin/nologin为/bin/bash
+			sed -i '5,10s/\/sbin\/nologin/\/bin\/bash/g' passwd  
+	3、修改/etc/passwd中匹配到/sbin/nologin的行，将匹配到行中的login改为大写的LOGIN
+		    sed -i '/\/sbin\/nologin/s/login/LOGIN/g' passwd
+    4、修改/etc/passwd中从匹配到以root开头的行，到匹配到行中包含mail的所有行。修改内为将这些所有匹配到的行中的bin改为HADOOP
+		    sed -i '/^root/,/mail/s/bin/HADOOP/g' passwd
+    5、修改/etc/passwd中从匹配到以root开头的行，到第15行中的所有行，修改内容为将这些行中的nologin修改为SPARK
+            sed -i '/^root/,15s/nologin/SPARK/g' passwd
+    6、修改/etc/passwd中从第15行开始，到匹配到以yarn开头的所有航，修改内容为将这些行中的bin换位BIN
+            sed -i '15,/^yarn/s/bin/BIN/g' passwd
+    
+	追加用法总结：
+	
+		1、a					在匹配行后面追加		
+		2、i					在匹配行前面追加
+		3、r					将文件内容追加到匹配行后面
+		4、w					将匹配行写入指定文件
+		
