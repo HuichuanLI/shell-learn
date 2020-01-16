@@ -149,7 +149,27 @@ sed(Stream Editor)，流编辑器。对标准输出或文件逐 行进行处理
        # 可以替换       
        sed -i 's/\(had\)....../\1doop/ig' str.txt
 
-       
+      查找：
+      1. 打印/etc/passwd中的20行
+      sed -n '20p' /etc/passwd
+      2. 8-15行打印
+      sed -n '8,15p' passwd
+      3. 8行+5行结束内容
+      sed -n '8,+5p' passwd
+      4. 打印hdfs 开头的内容
+      sed -n '/^hdfs/p' passwd
+      5. 打印root 开头到hdfs结束的行的内容
+      sed -n '/^root/,/^hdfs/p' passwd
+      
+      # 处理my.cnf
+      
+      
+      
+      
+![](./photo/06.png)
+
+[sed example](./mysql_process.sh)
+      
        
 
        
