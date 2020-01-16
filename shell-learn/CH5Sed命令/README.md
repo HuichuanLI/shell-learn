@@ -78,7 +78,68 @@ sed(Stream Editor)，流编辑器。对标准输出或文件逐 行进行处理
 
 
     
+### sed 的编辑命令详解
 
+![](./photo/04.png)
 
-    
-    
+![](./photo/05.png)
+
+       删除
+       sed '1d' passwd 
+       sed -i '1,3d' passwd 
+       
+       sed -i '/\/sbin\/nologin/d' passwd
+       
+       sed -i '/^mail/,/^ftp/d' passwd
+       
+       增加：
+       最后添加
+       sed -i '\/bin\/bash/a This is a user which can login to system'  passwd
+       行前添加
+       sed -i '/^hdfs/,/^yarn/i AAAAAAA' passwd 
+       # 写到文件中
+       sed -n '/root/r list' passwd
+       # 写出文件
+       sed -i '/\/bin\/bash/w ./login.txt' passwd
+       
+       修改：
+       s/pattern/string/ 查找并替换一行第一个
+       
+       s/pattern/string/g 查找并替换全部
+       
+       s/pattern/string/ig 查找并替换 忽略大小写
+       
+       s/pattern/string/2g 从第二个开始替换所有的
+       
+       s/pattern/string/2 始替换第二个的
+       
+       # 替换掉
+       sed 's/\/bin\/bash/\/BIN\/BASH/g' passwd
+       
+       sed 's/root/ROOT/' passwd
+       
+       # 替换的是后两个
+       sed 's/root/ROOT/2g' passwd
+       
+       其他：
+       = 显示行号
+       
+       sed -n '/root/=' passwd
+        
+       # 反向引用
+       
+       sed -i 's/had..p/&/ig' str.txt 
+       &  
+       \1 可以部分替换
+       
+       # 可以替换       
+       sed -i 's/\(had\)....../\1doop/ig' str.txt
+
+       
+       
+
+       
+       
+       
+
+       

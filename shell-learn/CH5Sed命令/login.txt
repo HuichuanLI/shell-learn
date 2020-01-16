@@ -1,0 +1,6 @@
+root:x:0:0:ROOT:/ROOT:/bin/bash
+hqdc:x:1000:1000::/home/hqdc:/bin/bash
+hdfs:x:1001:1001::/home/hdfs:/bin/bash
+yarn:x:1002:1002::/home/yarn:/bin/bash
+zk:x:1003:1003::/home/zk:/bin/bash
+db:x:1004:1004::/home/db:/bin/bash
