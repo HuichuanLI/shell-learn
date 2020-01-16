@@ -169,11 +169,37 @@ sed(Stream Editor)，流编辑器。对标准输出或文件逐 行进行处理
 ![](./photo/06.png)
 
 [sed example](./mysql_process.sh)
-      
-       
 
-       
-       
-       
+### sed 删除内容
+    用法总结：
 
+    1、1d
+    2、5,10d
+    3、10,+10d
+    4、/pattern1/d
+    5、/pattern1/,/pattern2/d
+    6、/pattern1/,20d
+    7、15,/pattern1/d
+       
+    练习例子：
+		
+    1、删除/etc/passwd中的第15行	
+        sed -i '15d' /etc/passwd
+    2、删除/etc/passwd中的第8行到第14行的所有内容	
+        sed -i '8,14d' passwd
+    3、删除/etc/passwd中的不能登录的用户(筛选条件：/sbin/nologin)	
+        sed -i '/\/sbin\/nologin/d' passwd
+    4、删除/etc/passwd中以mail开头的行，到以yarn开头的行的所有内容		
+        sed -i '/^mail/,/^yarn/d' passwd
+    5、删除/etc/passwd中第一个不能登录的用户，到第13行的所有内容
+        sed -i '/\/sbin\/nologin/,13d' passwd
+    6、删除/etc/passwd中第5行到以ftp开头的所有行的内容
+        sed -i '5,/^ftp/d' passwd
+    7、删除/etc/passwd中以yarn开头的行到最后行的所有内容	
+        sed -i '/^yarn/,$d' passwd
+    
+    1、删除配置文件中的所有注释行和空行
+		sed -i '/[:blank:]*#/d;/^$/d' nginx.conf
+    2、在配置文件中所有不以#开头的行前面添加*符号，注意：以#开头的行不添加
+        sed -i 's/^[^#]/\*&/g' nginx.conf
        
