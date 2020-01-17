@@ -65,3 +65,8 @@ awk 'BEGIN{ORS="&"}{print $1,$3}' list list
 输出文件名
 awk '{print FILENAME}' list
 
+
+awk '{print ARGC}' list
+
+$NF 最后一个字段
+awk 'BEGIN{FS=":"}{print $NF}' passwd
