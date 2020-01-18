@@ -145,16 +145,40 @@ awk的命名是它的创始人AlfredAho，Peter Weinberger 和Brian Kernighan姓
     (5)、以：为分隔符，匹配/etc/passwd中第3个字段包含3个以上数字的所有行信息
         awk 'BEGIN{FS=":"}$3~/[0-9]{3,}/{print $0}' /etc/passwd
         
-     布尔运算符匹配：
+    布尔运算符匹配：
 			||			或
 			&&			与
 			!			非
 			
-		(1)、以:为分隔符，匹配/etc/passwd文件中包含hdfs或yarn的所有行信息
-			awk 'BEGIN{FS=":"}$1=="hdfs" || $1=="yarn" {print $0}' /etc/passwd
-		(2)、以:为分隔符，匹配/etc/passwd文件中第3个字段小于50并且第4个字段大于50的所有行信息
-			awk 'BEGIN{FS=":"}$3<50 && $4>50 {print $0}' /etc/passwd
-			
+    (1)、以:为分隔符，匹配/etc/passwd文件中包含hdfs或yarn的所有行信息
+        awk 'BEGIN{FS=":"}$1=="hdfs" || $1=="yarn" {print $0}' /etc/passwd
+    (2)、以:为分隔符，匹配/etc/passwd文件中第3个字段小于50并且第4个字段大于50的所有行信息
+        awk 'BEGIN{FS=":"}$3<50 && $4>50 {print $0}' /etc/passwd
 		
+## awk动作中的表达式用法总结：
+
+    算数运算符
+		+				加
+		-				减
+		*				乘
+		/				除
+		%				取模
+		^或**			乘方
+		++x				在返回x变量之前，x变量加1
+		x++				在返回x变量之后，x变量加1
+		--x				在返回x变量之前，x变量减1
+		x--				在返回x变量之后，x变量减1
 			
-		
+	awk 'BEGIN{var=20;var1="hello";print var,var1}'
+    awk 'BEGIN{num1=20;num2+=num1;print num1,num2}'
+    
+    awk 'BEGIN{num1=20;num2-=num1;print num1,num2}'
+    awk 'BEGIN{num1=20;num2*=num1;print num1,num2}'
+    awk 'BEGIN{num1=20;num2/=num1;print num1,num2}'
+    awk 'BEGIN{x=20;y=x++;print x,y}'
+    awk 'BEGIN{x=20;y=++x;print x,y}'
+
+    1、使用awk计算/etc/services中的空白行数量
+        awk '/^$/{sum=0;sum++}END{print sum}' passwd 
+    2. 计算学生课程分数平均值，学生课程文件内容如下：
+     awk 'BEGIN{printf "%-8s%-8s%-8s%-8s%-8s%s\n","Name","Yuwen","Math","English","Pysical","Average"}{total=$2+$3+$4+$5;AVG=total/4;printf "%-8s%-8d%-8d%-8d%-8d%0.2f\n",$1,$2,$3,$4,$5,AVG}' student.txt
