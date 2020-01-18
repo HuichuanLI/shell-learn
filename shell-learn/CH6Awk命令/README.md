@@ -284,5 +284,24 @@ root:x:0:0:root:/root:/bin/bash
 	awf -f while.awk
 	
 	awk -F ":" '{print $7}' passwd
-		
+
+
+## Shell中数组的用法：
+
+	array=("Allen" "Mike" "Messi" "Jerry" "Hanmeimei" "Wang")
+	echo ${#str}
+	从0开始
+	打印元素：			echo ${array[2]} 
+	打印元素个数:		    echo ${#array[@]}  echo ${#array[*]}
+	打印元素长度：		echo ${#array[3]}
+	给元素赋值：		    array[3]="Li"
+	删除元素：			unset array[2];unset array
+	分片访问：			echo ${array[@]:1:3}
+	元素内容替换：		${array[@]/e/E}	只替换第一个e;${array[@]//e/E}	替换所有的e
+	数组的遍历：
+		for a in ${array[@]}
+		do
+			echo $a
+		done
+	
 				
