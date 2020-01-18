@@ -46,7 +46,7 @@ awk的命名是它的创始人AlfredAho，Peter Weinberger 和Brian Kernighan姓
     
     awk 'BEGIN{FS=":"} {print $1}' passwd
 
-## uid
+##### uid
 
     awk 'BEGIN{FS=":"} {print $3}' passwd
     
@@ -217,3 +217,54 @@ awk的命名是它的创始人AlfredAho，Peter Weinberger 和Brian Kernighan姓
 [awk代码-while](./while.awk)		
 [awk代码-for](./for.awk)		
 [awk代码-do while](./do-while.awk)		
+
+
+[student.awk](./student.awk)
+
+
+## awk字符串函数
+
+	length(str)						计算长度
+	index(str1,str2)				返回在str1中查询到的str2的位置
+	tolower(str)					小写转换
+	toupper(str)					大写转换	
+	split(str,arr,fs)				分隔字符串，并保存到数组中
+	match(str,RE)					返回正则表达式匹配到的子串的位置
+	substr(str,m,n)					截取子串，从m个字符开始，截取n位。n若不指定，则默认截取到字符串尾
+	sub(RE,RepStr,str)				替换查找到的第一个子串
+	gsub(RE,RepStr,str)				替换查找到的所有子串
+    
+1.以:为分隔符，返回/etc/passwd中每行中每个字段的长度	
+root:x:0:0:root:/root:/bin/bash
+4:1:1:1:4:5:9
+    
+[str_example](./str_example.awk)
+
+2、搜索字符串"I have a dream"中出现"ea"子串的位置
+    
+     1) awk 'BEGIN{str="I hava a dream";location=index(str,"ea");print location}'
+     2) awk 'BEGIN{str="I hava a dream";location=match(str,"ea");print location}'
+
+3、将字符串"Hadoop is a bigdata Framawork"全部转换为小写
+
+    awk 'BEGIN{str="Hadoop is a bigdata Framework";print tolower(str)}'
+4、将字符串"Hadoop is a bigdata Framawork"全部转换为大写
+		
+	awk 'BEGIN{str="Hadoop is a bigdata Framework";print toupper(str)}'
+
+5、将字符串"Hadoop Kafka Spark Storm HDFS YARN Zookeeper"，按照空格为分隔符，分隔每部分保存到数组array中
+    
+    awk 'BEGIN{str="Hadoop Kafka Spark Storm HDFS YARN Zookeeper";split(str,arr);for(a in arr) print arr[a]}'
+    
+6.搜索字符串"Tranction 2345 Start:Select * from master"第一个数字出现的位置
+
+    awk 'BEGIN{str="Tranction 2345 Start:Select * from master";location=match(str,/[0-9]/);print location}'
+    
+7、截取字符串"transaction start"的子串，截取条件从第4个字符开始，截取5位
+		
+	awk 'BEGIN{str="transaction start";print substr(str,4,5)}'
+	awk 'BEGIN{str="transaction start";print substr(str,4)}'
+8、替换字符串"Tranction 243 Start,Event ID:9002"中第一个匹配到的数字串为$符号
+    
+    awk 'BEGIN{str="Tranction 243 Start,Event ID:9002";count=sub(/[0-9]+/,"$",str);print count,str}'
+    awk 'BEGIN{str="Tranction 243 Start,Event ID:9002";count=gsub(/[0-9]+/,"$",str);print count,str}'
