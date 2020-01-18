@@ -88,26 +88,73 @@ awk的命名是它的创始人AlfredAho，Peter Weinberger 和Brian Kernighan姓
     左对齐
     awk 'BEGIN{FS=":"}{printf "%-20s-%-20s\n",$1,$7}' passwd
     格式符示例：
-			1、以字符串格式打印/etc/passwd中的第7个字段，以":"作为分隔符
+        1、以字符串格式打印/etc/passwd中的第7个字段，以":"作为分隔符
+        
+            awk 'BEGIN{FS=":"} {printf "%s",$7}' /etc/passwd
+        
+        2、以10进制格式打印/etc/passwd中的第3个字段，以":"作为分隔符
+        
+            awk 'BEGIN{FS=":"} {printf "%d\n",$3}' /etc/passwd
+        
+        3、以浮点数格式打印/etc/passwd中的第3个字段，以":"作为分隔符
+        
+            awk 'BEGIN{FS=":"} {printf "%0.3f\n",$3}' /etc/passwd
+        
+        4、以16进制数格式打印/etc/passwd中的第3个字段，以":"作为分隔符
+        
+            awk 'BEGIN{FS=":"} {printf "%#x\n",$3}' /etc/passwd
+        
+        5、以8进制数格式打印/etc/passwd中的第3个字段，以":"作为分隔符
+        
+            awk 'BEGIN{FS=":"} {printf "%#o\n",$3}' /etc/passwd
+        
+        6、以科学计数法格式打印/etc/passwd中的第3个字段，以":"作为分隔符
+              awk 'BEGIN{FS=":"} {printf "%e\n",$3}' /etc/passwd
+        
+    
+## awk模式匹配用法总结：
+
+	第一种方法：RegExp
+	第二种方法：运算符匹配
+	
+	1、RegExp
+	
+		匹配/etc/passwd文件行中含有root字符串的所有行
+			awk 'BEGIN{FS=":"}/root/{print $0}' /etc/passwd
+		匹配/etc/passwd文件行中以yarn开头的所有行
+			awk 'BEGIN{FS=":"}/^yarn/{print $0}' /etc/passwd
+    2、运算符匹配
+	
+		关系运算符匹配：
+			<			小于
+			>			大于
+			<=			小于等于
+			>=			大于等于
+			==			等于
+			!=			不等于
+			~			匹配正则表达式
+			!~			不匹配正则表达式
+    (1)、以:为分隔符，匹配/etc/passwd文件中第3个字段小于50的所有行信息
+        awk 'BEGIN{FS=":"}$3<50{print $0}' /etc/passwd
+    (2)、以:为分隔符，匹配/etc/passwd文件中第3个字段大于50的所有行信息
+        awk 'BEGIN{FS=":"}$3>50{print $0}' /etc/passwd
+    (3)、以:为分隔符，匹配/etc/passwd文件中第7个字段为/bin/bash的所有行信息
+        awk 'BEGIN{FS=":"}$7=="/bin/bash"{print $0}' /etc/passwd
+    (4)、以:为分隔符，匹配/etc/passwd文件中第7个字段不为/bin/bash的所有行信息
+        awk 'BEGIN{FS=":"}$7!="/bin/bash"{print $0}' /etc/passwd
+    (5)、以：为分隔符，匹配/etc/passwd中第3个字段包含3个以上数字的所有行信息
+        awk 'BEGIN{FS=":"}$3~/[0-9]{3,}/{print $0}' /etc/passwd
+        
+     布尔运算符匹配：
+			||			或
+			&&			与
+			!			非
 			
-				awk 'BEGIN{FS=":"} {printf "%s",$7}' /etc/passwd
+		(1)、以:为分隔符，匹配/etc/passwd文件中包含hdfs或yarn的所有行信息
+			awk 'BEGIN{FS=":"}$1=="hdfs" || $1=="yarn" {print $0}' /etc/passwd
+		(2)、以:为分隔符，匹配/etc/passwd文件中第3个字段小于50并且第4个字段大于50的所有行信息
+			awk 'BEGIN{FS=":"}$3<50 && $4>50 {print $0}' /etc/passwd
 			
-			2、以10进制格式打印/etc/passwd中的第3个字段，以":"作为分隔符
+		
 			
-				awk 'BEGIN{FS=":"} {printf "%d\n",$3}' /etc/passwd
-			
-			3、以浮点数格式打印/etc/passwd中的第3个字段，以":"作为分隔符
-			
-				awk 'BEGIN{FS=":"} {printf "%0.3f\n",$3}' /etc/passwd
-			
-			4、以16进制数格式打印/etc/passwd中的第3个字段，以":"作为分隔符
-			
-				awk 'BEGIN{FS=":"} {printf "%#x\n",$3}' /etc/passwd
-			
-			5、以8进制数格式打印/etc/passwd中的第3个字段，以":"作为分隔符
-			
-				awk 'BEGIN{FS=":"} {printf "%#o\n",$3}' /etc/passwd
-			
-			6、以科学计数法格式打印/etc/passwd中的第3个字段，以":"作为分隔符
-			
-			
+		
