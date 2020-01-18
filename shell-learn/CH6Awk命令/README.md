@@ -268,3 +268,21 @@ root:x:0:0:root:/root:/bin/bash
     
     awk 'BEGIN{str="Tranction 243 Start,Event ID:9002";count=sub(/[0-9]+/,"$",str);print count,str}'
     awk 'BEGIN{str="Tranction 243 Start,Event ID:9002";count=gsub(/[0-9]+/,"$",str);print count,str}'
+    
+### awk 选项
+
+
+	awk中常用选项
+	
+		-v		定义或引用变量
+		-f		指定awk命令文件
+		-F		指定分隔符
+		-V		查看awk的版本号
+	
+	awk -v var1="$var" 'BEGIN{print var1}' 
+	
+	awf -f while.awk
+	
+	awk -F ":" '{print $7}' passwd
+		
+				
