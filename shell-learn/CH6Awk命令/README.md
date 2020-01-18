@@ -42,31 +42,72 @@ awk的命名是它的创始人AlfredAho，Peter Weinberger 和Brian Kernighan姓
 			ARGV				命令行参数数组
 
 ### awk 命令例子
-awk '{print $0}' passwd
-
-awk 'BEGIN{FS=":"} {print $1}' passwd
+    awk '{print $0}' passwd
+    
+    awk 'BEGIN{FS=":"} {print $1}' passwd
 
 ## uid
 
-awk 'BEGIN{FS=":"} {print $3}' passwd
-
-awk '{print $1}' list
+    awk 'BEGIN{FS=":"} {print $3}' passwd
+    
+    awk '{print $1}' list
 ### 字段的个数
-awk '{print NF}' list
+    awk '{print NF}' list
+    
+    awk '{print NR}' list list
+    
+    awk '{print FNR}' list list
+    
+    awk 'BEGIN{RS="\t";FS="|";ORS="&"}{print $1,$3}' list list
+    
+    awk 'BEGIN{ORS="&"}{print $1,$3}' list list
+    
+    输出文件名
+    awk '{print FILENAME}' list
+    
+    
+    awk '{print ARGC}' list
+    
+    $NF 最后一个字段
+    awk 'BEGIN{FS=":"}{print $NF}' passwd
 
-awk '{print NR}' list list
-
-awk '{print FNR}' list list
-
-awk 'BEGIN{RS="\t";FS="|";ORS="&"}{print $1,$3}' list list
-
-awk 'BEGIN{ORS="&"}{print $1,$3}' list list
-
-输出文件名
-awk '{print FILENAME}' list
+### printf
 
 
-awk '{print ARGC}' list
+![](./photo/05.png)
+    
+    	-		左对齐
+        +		右对齐
+        #		显示8进制在前面加0，显示16进制在前面加0x
 
-$NF 最后一个字段
-awk 'BEGIN{FS=":"}{print $NF}' passwd
+    awk 'BEGIN{FS=":"}{printf $1}' passwd
+    awk 'BEGIN{FS=":"}{printf "%s\n",$1}' passwd
+    awk 'BEGIN{FS=":"}{printf "%s-%s\n",$1,$7}' passwd
+    20 占位
+    awk 'BEGIN{FS=":"}{printf "%20s-%20s\n",$1,$7}' passwd
+    左对齐
+    awk 'BEGIN{FS=":"}{printf "%-20s-%-20s\n",$1,$7}' passwd
+    格式符示例：
+			1、以字符串格式打印/etc/passwd中的第7个字段，以":"作为分隔符
+			
+				awk 'BEGIN{FS=":"} {printf "%s",$7}' /etc/passwd
+			
+			2、以10进制格式打印/etc/passwd中的第3个字段，以":"作为分隔符
+			
+				awk 'BEGIN{FS=":"} {printf "%d\n",$3}' /etc/passwd
+			
+			3、以浮点数格式打印/etc/passwd中的第3个字段，以":"作为分隔符
+			
+				awk 'BEGIN{FS=":"} {printf "%0.3f\n",$3}' /etc/passwd
+			
+			4、以16进制数格式打印/etc/passwd中的第3个字段，以":"作为分隔符
+			
+				awk 'BEGIN{FS=":"} {printf "%#x\n",$3}' /etc/passwd
+			
+			5、以8进制数格式打印/etc/passwd中的第3个字段，以":"作为分隔符
+			
+				awk 'BEGIN{FS=":"} {printf "%#o\n",$3}' /etc/passwd
+			
+			6、以科学计数法格式打印/etc/passwd中的第3个字段，以":"作为分隔符
+			
+			
