@@ -213,6 +213,7 @@ awk的命名是它的创始人AlfredAho，Peter Weinberger 和Brian Kernighan姓
 [awk代码](./script.awk)	
     
     awk -f script.awk passwd
-	2、计算1+2+3+4+...+100的和，请使用while、do while、for三种循环方式实现
-	
-	
+2、计算1+2+3+4+...+100的和，请使用while、do while、for三种循环方式实现
+[awk代码-while](./while.awk)		
+[awk代码-for](./for.awk)		
+[awk代码-do while](./do-while.awk)		
