@@ -182,3 +182,37 @@ awk的命名是它的创始人AlfredAho，Peter Weinberger 和Brian Kernighan姓
         awk '/^$/{sum=0;sum++}END{print sum}' passwd 
     2. 计算学生课程分数平均值，学生课程文件内容如下：
      awk 'BEGIN{printf "%-8s%-8s%-8s%-8s%-8s%s\n","Name","Yuwen","Math","English","Pysical","Average"}{total=$2+$3+$4+$5;AVG=total/4;printf "%-8s%-8d%-8d%-8d%-8d%0.2f\n",$1,$2,$3,$4,$5,AVG}' student.txt
+
+## awk动作中的条件及循环语句
+    条件语句：
+		
+			if(条件表达式1)
+				动作
+			else if(条件表达式2)
+				动作
+			else
+				动作
+				
+		循环语句：
+		
+			while循环:
+				while(条件表达式)
+					动作
+					
+			do while循环:
+				do
+					动作
+				while(条件表达式)
+				
+			for循环:
+				for(初始化计数器;计数器测试;计数器变更)
+					动作
+    1、以:为分隔符，只打印/etc/passwd中第3个字段的数值在50-100范围内的行信息
+        awk 'BEGIN{FS=":"} {if{$2>50} print $0}' passwd
+
+[awk代码](./script.awk)	
+    
+    awk -f script.awk passwd
+	2、计算1+2+3+4+...+100的和，请使用while、do while、for三种循环方式实现
+	
+	
