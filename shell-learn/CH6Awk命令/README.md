@@ -303,5 +303,36 @@ root:x:0:0:root:/root:/bin/bash
 		do
 			echo $a
 		done
+
+## awk中数组的用法：
+
+	在awk中，使用数组时，不仅可以使用1.2..n作为数组下标，也可以使用字符串作为数组下标
 	
-				
+	当使用1.2.3..n时，直接使用array[2]访问元素;需要遍历数组时，使用以下形式：
+	
+		str="Allen Jerry Mike Tracy Jordan Kobe Garnet"
+		split(str,array)
+		for(i=1;i<=length(array);i++)
+			print array[i]
+	 awk 'BEGIN{str="Allen Jerry Mike Tracy Jordan Kobe Garnet";split(str,array);for(i=1;i<=length(array);i++)print array[i]}'
+    
+    当使用字符串作为数组下标时，需要使用array[str]形式访问元素;遍历数组时，使用以下形式：
+		array["var1"]="Jin"
+		array["var2"]="Hao"
+		array["var3"]="Fang"
+		
+		for(a in array)
+			print array[a]
+    
+    典型常用例子：
+		1、统计主机上所有的TCP连接状态数，按照每个TCP状态分类
+		    netstat -an | grep tcp | awk '{array[$6]++}END{for(a in array) print a,array[a]}'
+		
+	    	2、计算横向数据总和，计算纵向数据总和
+		
+			allen	80	90	87	91	348
+			mike	78	86	93	96	256
+			Kobe	66	92	82	78	232
+			Jerry	98	74	66	54  356
+			Wang	87	21	100	43  322
+					234 342 451 456 342
