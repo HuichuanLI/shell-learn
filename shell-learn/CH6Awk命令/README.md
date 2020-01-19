@@ -328,11 +328,27 @@ root:x:0:0:root:/root:/bin/bash
 		1、统计主机上所有的TCP连接状态数，按照每个TCP状态分类
 		    netstat -an | grep tcp | awk '{array[$6]++}END{for(a in array) print a,array[a]}'
 		
-	    	2、计算横向数据总和，计算纵向数据总和
-		
-			allen	80	90	87	91	348
-			mike	78	86	93	96	256
-			Kobe	66	92	82	78	232
-			Jerry	98	74	66	54  356
-			Wang	87	21	100	43  322
-					234 342 451 456 342
+        2、计算横向数据总和，计算纵向数据总和
+    
+        allen	80	90	87	91	348
+        mike	78	86	93	96	256
+        Kobe	66	92	82	78	232
+        Jerry	98	74	66	54  356
+        Wang	87	21	100	43  322
+                234 342 451 456 342
+        BEGIN {
+				printf "%-10s%-10s%-10s%-10s%-10s%-10s\n","Name","Yuwen","Math","English","Physical","Total"
+			}
+		{
+				total=$2+$3+$4+$5
+				yuwen_sum+=$2
+				math_sum+=$3
+				eng_sum+=$4
+				phy_sum+=$5
+				printf "%-10s%-10d%-10d%-10d%-10d%-10d\n",$1,$2,$3,$4,$5,total
+			}
+			END {
+			
+				printf "%-10s%-10d%-10d%-10d%-10d\n","",yuwen_sum,math_sum,eng_sum,phy_sum
+			
+			}
