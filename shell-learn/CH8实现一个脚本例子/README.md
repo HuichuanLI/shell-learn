@@ -35,3 +35,9 @@
             {
                 
             }
+        	./app_status.sh执行有三种情况：
+	
+		1	无参数			列出配置文件中所有进程的运行信息
+		2	-g GroupName	列出GroupName组内的所有进程
+		3	process_name1	列出指定进程的运行信息
+		

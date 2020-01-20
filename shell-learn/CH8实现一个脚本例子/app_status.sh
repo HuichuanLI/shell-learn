@@ -76,14 +76,26 @@ function get_group_by_process_name
   	fi
 }
 
-#for g in `get_all_process`
-#do
-#     get_process_pid_by_name $g
-#done
 
-#get_process_info_by_pid 180
-#
-#echo "$pro_status $pro_cpu $pro_mem $pro_start_time"
-
-get_group_by_process_name $1
+f [ $# -gt 0 ];then
+	if [ "$1" == "-g" ];then
+		shift
+		for gn in $@;do
+			is_group_in_config $gn || continue
+			for pn in `get_all_process_by_group $gn`;do
+				is_process_in_config $pn && format_print $pn $gn
+			done
+		done
+	else
+		for pn in $@;do
+			gn=`get_group_by_process_name $pn`
+			is_process_in_config $pn && format_print $pn $gn
+		done
+	fi
+else
+	for pn in `get_all_process`;do
+		gn=`get_group_by_process_name $pn`
+                is_process_in_config $pn && format_print $pn $gn
+	done
+fi
 
