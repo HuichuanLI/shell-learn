@@ -46,4 +46,21 @@ mysql命令参数详解：
 			2023||ouyang||1989-12-21||male
 			2024||li||1989-12-21||female
 			
-        
+### 备份MySQL中的库或表
+	
+		mysqldump
+			常用参数详解：
+			-u		用户名
+			-p		密码
+			-h		服务器IP地址
+			-d		等价于--no-data		只导出表结构
+			-t		等价于--no-create-info	只导出数据，不导出建表语句
+			-A		等价于--all-databases
+			-B		等价于--databases	导出一个或多个数据库
+    需求：将school中的score表备份
+    
+     mysqldump -uroot -proot school score >score.sql
+     mysqldump -uroot -proot  -A >score.sql
+     mysqldump -uroot -proot  -B school >score.sql
+
+    
