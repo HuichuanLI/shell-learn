@@ -10,4 +10,4 @@
 | CH5Sed命令  |[地址](./shell-learn/CH5Sed命令) |
 | CH6Awk命令  |[地址](./shell-learn/CH6Awk命令) |
 | CH7shell操作mysql  |[地址](./shell-learn/CH7shell操作mysql) |
-
+| CH8项目脚本  |[地址](./shell-learn/CH8实现一个脚本例子) |
